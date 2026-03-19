@@ -1,0 +1,13 @@
+/// <reference types="vite/client" />
+
+interface ImportMetaEnv {
+  readonly VITE_GEMINI_API_KEY?: string;
+  readonly VITE_GEMINI_FLASH_MODEL?: string;
+  readonly VITE_GEMINI_PRO_MODEL?: string;
+  readonly VITE_API_KEY?: string;
+  readonly GEMINI_API_KEY?: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}

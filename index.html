@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuroNex - AI Learning Companion</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #040406;
+      background-image:
+        radial-gradient(circle at -12% 50%, rgba(176, 134, 62, 0.16) 0%, rgba(176, 134, 62, 0) 34%),
+        radial-gradient(circle at 112% 50%, rgba(176, 134, 62, 0.16) 0%, rgba(176, 134, 62, 0) 34%),
+        radial-gradient(circle at 50% -30%, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 45%);
+      color: #e9e9eb;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #111216;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #5b412f;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #73543d;
+    }
+
+    /* Animations */
+    @keyframes pulse-glow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 8px rgba(194, 150, 62, 0.1);
+      }
+
+      50% {
+        box-shadow: 0 0 14px rgba(194, 150, 62, 0.2);
+      }
+    }
+
+    .animate-pulse-glow {
+      animation: pulse-glow 2s infinite;
+    }
+
+    .glass-panel {
+      background:
+        linear-gradient(165deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.01)),
+        linear-gradient(180deg, rgba(194, 150, 62, 0.045), rgba(194, 150, 62, 0));
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 0 0 1px rgba(194, 150, 62, 0.12),
+        0 0 0 1px rgba(194, 150, 62, 0.11),
+        0 16px 36px rgba(0, 0, 0, 0.48),
+        0 0 10px rgba(194, 150, 62, 0.1);
+      backdrop-filter: blur(24px) saturate(165%);
+      -webkit-backdrop-filter: blur(24px) saturate(165%);
+      border: 1px solid rgba(194, 150, 62, 0.3);
+    }
+
+    /* Form controls readability on dark glass surfaces */
+    :where(input, select, textarea):not(.editor-textarea) {
+      color: #eceef3;
+    }
+
+    :where(input, textarea)::placeholder {
+      color: #9ca3af;
+      opacity: 0.9;
+    }
+
+    select {
+      color: #eceef3;
+    }
+
+    select option {
+      background-color: #0f1115;
+      color: #eceef3;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+      -webkit-text-fill-color: #eceef3;
+      box-shadow: 0 0 0px 1000px #121419 inset;
+      transition: background-color 9999s ease-in-out 0s;
+    }
+
+    /* IDE editor styling (react-simple-code-editor + Prism) */
+    .editor-root {
+      min-height: 100%;
+    }
+
+    .editor-pre,
+    .editor-textarea {
+      margin: 0;
+      line-height: 1.5rem;
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      white-space: pre !important;
+      word-break: normal !important;
+      overflow-wrap: normal !important;
+    }
+
+    .editor-textarea {
+      color: transparent;
+      caret-color: #e5e7eb;
+      outline: none;
+    }
+
+    .editor-pre {
+      pointer-events: none;
+      color: #e5e7eb;
+    }
+
+    .editor-line {
+      display: block;
+      min-height: 24px;
+      border-radius: 4px;
+      padding: 0 6px;
+      margin: 0 -6px;
+    }
+
+    .editor-line-active {
+      background: rgba(194, 150, 62, 0.13);
+      box-shadow: inset 0 0 0 1px rgba(194, 150, 62, 0.18);
+    }
+
+    .token.comment,
+    .token.prolog,
+    .token.doctype,
+    .token.cdata {
+      color: #6b7280;
+    }
+
+    .token.punctuation {
+      color: #9ca3af;
+    }
+
+    .token.keyword,
+    .token.atrule,
+    .token.selector,
+    .token.important,
+    .token.tag {
+      color: #f59e0b;
+    }
+
+    .token.function,
+    .token.class-name,
+    .token.property,
+    .token.builtin {
+      color: #60a5fa;
+    }
+
+    .token.string,
+    .token.attr-value,
+    .token.regex {
+      color: #34d399;
+    }
+
+    .token.number,
+    .token.boolean,
+    .token.constant,
+    .token.symbol {
+      color: #f472b6;
+    }
+
+    .token.operator,
+    .token.entity,
+    .token.url,
+    .token.variable {
+      color: #e5e7eb;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: '#040406',
+            surface: '#0D0F14',
+            primary: '#C2963E',
+            secondary: '#8A6A2A',
+            subtext: '#A1A3AA',
+            success: '#7FB98A',
+            error: '#D46A5F'
+          }
+        }
+      }
+    }
+  </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.564.0",
+    "recharts": "https://esm.sh/recharts@^3.7.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.41.0"
+  }
+}
+</script>
+
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>

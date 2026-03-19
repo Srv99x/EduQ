@@ -1,0 +1,44 @@
+[
+  {
+    "id": "en-us",
+    "label": "English (US)",
+    "lang": "en-US",
+    "voiceHints": ["Google US English", "Samantha", "Jenny", "Aria"]
+  },
+  {
+    "id": "en-gb",
+    "label": "English (UK)",
+    "lang": "en-GB",
+    "voiceHints": ["Google UK English", "Serena", "Libby", "Hazel"]
+  },
+  {
+    "id": "hi-in",
+    "label": "Hindi (India)",
+    "lang": "hi-IN",
+    "voiceHints": ["Google हिन्दी", "Heera"]
+  },
+  {
+    "id": "es-es",
+    "label": "Spanish (Spain)",
+    "lang": "es-ES",
+    "voiceHints": ["Google español", "Monica"]
+  },
+  {
+    "id": "fr-fr",
+    "label": "French (France)",
+    "lang": "fr-FR",
+    "voiceHints": ["Google français", "Amelie", "Thomas"]
+  },
+  {
+    "id": "de-de",
+    "label": "German (Germany)",
+    "lang": "de-DE",
+    "voiceHints": ["Google Deutsch", "Anna"]
+  },
+  {
+    "id": "ja-jp",
+    "label": "Japanese (Japan)",
+    "lang": "ja-JP",
+    "voiceHints": ["Google 日本語", "Kyoko"]
+  }
+]
