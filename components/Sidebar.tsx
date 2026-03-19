@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { LayoutDashboard, BookOpen, Code, Bot, PieChart, Settings, LogOut, ClipboardList, Target, Trophy, TrendingUp, Trees, Sparkles } from 'lucide-react';
+import { LayoutDashboard, BookOpen, Code, Bot, PieChart, Settings, LogOut, ClipboardList, Target, Trophy, TrendingUp, Network, Sparkles } from 'lucide-react';
 import { APP_NAME } from '../constants';
 
 export const Sidebar: React.FC = () => {
@@ -15,7 +15,7 @@ export const Sidebar: React.FC = () => {
     { icon: Target, label: 'Quests', path: '/quests' },
     { icon: Trophy, label: 'Achievements', path: '/achievements' },
     { icon: TrendingUp, label: 'Leaderboard', path: '/leaderboard' },
-    { icon: Trees, label: 'Skill Tree', path: '/skill-tree' },
+    { icon: Network, label: 'Neural Grid', path: '/progression-map' },
     { icon: Sparkles, label: 'Shop', path: '/shop' },
     { icon: PieChart, label: 'Analytics', path: '/analytics' },
   ];
@@ -31,8 +31,8 @@ export const Sidebar: React.FC = () => {
   return (
     <aside className="fixed left-0 top-0 h-screen w-64 bg-background/68 backdrop-blur-xl border-r border-primary/20 flex flex-col z-50">
       <div className="p-6 flex items-center gap-3">
-        <div className="w-8 h-8 rounded bg-primary/20 border border-primary/45 flex items-center justify-center shadow-[0_0_12px_rgba(176,122,76,0.14)]">
-          <span className="text-[#EBD8CA] font-bold text-lg">N</span>
+        <div className="w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden shrink-0">
+          <img src="/logo.jpeg" alt="EduVanta Logo" className="w-full h-full object-cover" />
         </div>
         <span className="text-xl font-bold tracking-tight text-white">{APP_NAME}</span>
       </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { GlassCard } from '../components/ui/GlassCard';
 import { Button } from '../components/ui/Button';
 import { Mic, MicOff, Volume2, VolumeX, Send, RefreshCw, MessageSquare, Sparkles } from 'lucide-react';
@@ -16,6 +17,7 @@ type UserInputSource = 'voice' | 'text';
 const VOICE_LANGUAGE_STORAGE_KEY = 'neuronex_voice_language';
 
 export const AvatarTutor: React.FC = () => {
+  const location = useLocation();
   const [isListening, setIsListening] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -198,8 +200,9 @@ export const AvatarTutor: React.FC = () => {
     setInputText('');
     setIsProcessing(true);
 
-    // Call AI Service
-    const responseText = await chatWithTutor(newMessages, text);
+    // Call AI Service with route and optional quest context
+    const activeQuest = localStorage.getItem('active_quest') || undefined;
+    const responseText = await chatWithTutor(newMessages, text, location.pathname, activeQuest);
     
     setMessages(prev => [...prev, { role: 'model' as const, text: responseText }]);
     setIsProcessing(false);
@@ -252,25 +255,25 @@ export const AvatarTutor: React.FC = () => {
             </span>
          </div>
 
-         <div className="absolute top-6 right-6">
-             <button onClick={() => setIsMuted(!isMuted)} className="text-subtext hover:text-white transition-colors">
+         <div className="absolute top-6 right-6 flex items-center gap-4 z-50">
+             <div className="flex items-center gap-2">
+                <label className="text-[10px] uppercase tracking-wide text-subtext hidden sm:block">Voice</label>
+                <select
+                  value={selectedVoiceLanguage}
+                  onChange={(e) => setSelectedVoiceLanguage(e.target.value)}
+                  className="bg-white/5 border border-white/10 rounded-sm px-2 py-1 text-xs text-white focus:outline-none focus:border-primary/60"
+                >
+                  {(voiceLanguageOptions.length > 0 ? voiceLanguageOptions : [{ id: 'fallback-en', label: 'English (US)', lang: 'en-US' }]).map((option) => (
+                    <option key={option.id} value={option.lang}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+             </div>
+
+             <button onClick={() => setIsMuted(!isMuted)} className="text-subtext hover:text-white transition-colors" title="Toggle Voice Output">
                 {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
              </button>
-         </div>
-
-         <div className="absolute top-16 right-6 flex items-center gap-2">
-            <label className="text-[10px] uppercase tracking-wide text-subtext">Voice</label>
-            <select
-              value={selectedVoiceLanguage}
-              onChange={(e) => setSelectedVoiceLanguage(e.target.value)}
-              className="bg-white/5 border border-white/10 rounded-sm px-2 py-1 text-xs text-white focus:outline-none focus:border-primary/60"
-            >
-              {(voiceLanguageOptions.length > 0 ? voiceLanguageOptions : [{ id: 'fallback-en', label: 'English (US)', lang: 'en-US' }]).map((option) => (
-                <option key={option.id} value={option.lang}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
          </div>
 
         {/* Central Avatar Visual */}
