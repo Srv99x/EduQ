@@ -272,12 +272,30 @@ export const AvatarTutor: React.FC = () => {
              </div>
 
              <button onClick={() => setIsMuted(!isMuted)} className="text-subtext hover:text-white transition-colors" title="Toggle Voice Output">
+      <GlassCard className="lg:col-span-4 flex flex-col items-center justify-start p-8 relative overflow-hidden bg-gradient-to-b from-surface/50 to-black/50">
+         <div className="absolute top-6 right-6">
+             <button onClick={() => setIsMuted(!isMuted)} className="text-subtext hover:text-white transition-colors">
                 {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
              </button>
          </div>
 
+         <div className="absolute top-6 left-6 flex items-center gap-2 z-50">
+            <label className="text-[10px] uppercase tracking-wide text-subtext">Voice</label>
+            <select
+              value={selectedVoiceLanguage}
+              onChange={(e) => setSelectedVoiceLanguage(e.target.value)}
+              className="bg-white/5 hover:bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary/80 focus:ring-2 focus:ring-primary/30 cursor-pointer transition-all"
+            >
+              {(voiceLanguageOptions.length > 0 ? voiceLanguageOptions : [{ id: 'fallback-en', label: 'English (US)', lang: 'en-US' }]).map((option) => (
+                <option key={option.id} value={option.lang}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+         </div>
+
         {/* Central Avatar Visual */}
-        <div className="flex-1 flex flex-col items-center justify-center w-full z-10">
+        <div className="flex-1 flex flex-col items-center justify-start w-full z-10 pt-16">
             <div className={`relative w-48 h-48 rounded-full flex items-center justify-center transition-all duration-700 ${isSpeaking ? 'scale-110 shadow-[0_0_80px_rgba(139,94,60,0.35)]' : 'shadow-[0_0_30px_rgba(255,255,255,0.05)]'}`}>
                 {/* Background Glow */}
                 <div className={`absolute inset-0 rounded-full blur-3xl opacity-20 transition-colors duration-500 ${isListening ? 'bg-primary' : 'bg-secondary'}`}></div>
@@ -291,15 +309,10 @@ export const AvatarTutor: React.FC = () => {
                 {/* Orbiting Ring */}
                 <div className={`absolute inset-0 border border-white/10 rounded-full w-56 h-56 -m-4 border-dashed animate-[spin_10s_linear_infinite] opacity-30`}></div>
             </div>
-
-            <div className="mt-8 text-center">
-                <h2 className="text-2xl font-bold text-white tracking-wide">NOVA</h2>
-                <p className="text-sm text-subtext/60 font-mono">AI TUTOR MODEL v3.1</p>
-            </div>
         </div>
 
         {/* Audio Visualizer Canvas */}
-        <div className="w-full h-24 relative z-0">
+        <div className="w-full h-24 relative z-0 mt-12">
              <canvas ref={canvasRef} className="w-full h-full" />
         </div>
 
@@ -319,7 +332,7 @@ export const AvatarTutor: React.FC = () => {
       </GlassCard>
 
       {/* Right Panel: Chat Interface (8 cols) */}
-      <div className="lg:col-span-8 flex flex-col h-full gap-4">
+      <div className="lg:col-span-8 flex flex-col h-full gap-4 overflow-hidden">
         {/* Chat History */}
         <GlassCard className="flex-1 flex flex-col p-0 overflow-hidden bg-black/20">
             <div className="p-4 border-b border-white/5 bg-white/5 flex justify-between items-center">
