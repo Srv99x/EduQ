@@ -14,7 +14,7 @@ interface VoiceLanguageOption {
 
 type UserInputSource = 'voice' | 'text';
 
-const VOICE_LANGUAGE_STORAGE_KEY = 'neuronex_voice_language';
+const VOICE_LANGUAGE_STORAGE_KEY = 'eduq_voice_language';
 
 export const AvatarTutor: React.FC = () => {
   const location = useLocation();

@@ -267,7 +267,7 @@ export const STREAK_MILESTONES: StreakMilestone[] = [
 ];
 
 // ========== SAMPLE QUESTS ==========
-// Each standard coding task is wrapped in an EduVanta high-stakes mission narrative.
+// Each standard coding task is wrapped in an EduQ high-stakes mission narrative.
 export const SAMPLE_DAILY_QUESTS = [
   {
     id: 'daily_lessons_2',
@@ -324,7 +324,7 @@ export const STORY_QUESTS = [
     id: 'story_hackathon_1',
     title: 'ACT I — The Serpent Protocol (Python Breach)',
     description:
-      'Intelligence reports confirm that the EduVanta core is running a corrupted Python daemon. Infiltrate the root process, rewrite the corrupted function stack, and purge the serpent\u2019s logic before it propagates to secondary systems. Complete the first Python infiltration challenge to proceed.',
+      'Intelligence reports confirm that the EduQ core is running a corrupted Python daemon. Infiltrate the root process, rewrite the corrupted function stack, and purge the serpent\u2019s logic before it propagates to secondary systems. Complete the first Python infiltration challenge to proceed.',
     icon: '🐍',
     xpReward: 150,
     gemReward: 30,

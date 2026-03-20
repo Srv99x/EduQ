@@ -32,7 +32,7 @@ _load_env_file(PROJECT_ROOT / ".env")
 _load_env_file(Path(__file__).resolve().parent / ".env")
 
 # Initialize FastAPI app
-app = FastAPI(title="NeuroNex API", version="1.0.0")
+app = FastAPI(title="EduQ API", version="1.0.0")
 
 allowed_origins = os.getenv(
     "FRONTEND_ORIGINS",
@@ -120,7 +120,7 @@ async def _run_with_onlinecompiler(payload: CodeExecutionRequest, timeout_second
 
 # --- Database Simulation ---
 # In a real production environment, use SQLAlchemy or asyncpg with PostgreSQL.
-# Example: database = await asyncpg.connect(user='user', password='password', database='neuronex', host='127.0.0.1')
+# Example: database = await asyncpg.connect(user='user', password='password', database='eduq', host='127.0.0.1')
 fake_subscriber_db = {"test@example.com", "alex.carter@example.com"}
 
 # --- Route Handlers ---
@@ -196,7 +196,7 @@ async def subscribe_newsletter(subscription: SubscriptionRequest):
     fake_subscriber_db.add(email_entry)
     
     return {
-        "message": "Successfully subscribed to NeuroNex updates!", 
+        "message": "Successfully subscribed to EduQ updates!", 
         "email": email_entry
     }
 

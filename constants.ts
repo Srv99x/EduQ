@@ -1,6 +1,6 @@
 import { User, UserRole, NotebookEntry } from './types';
 
-export const APP_NAME = "EduVanta";
+export const APP_NAME = "EduQ";
 
 export const MOCK_USER: User = {
   id: 'u_12345',

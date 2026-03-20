@@ -29,7 +29,7 @@ const DEFAULT_NODES: MapNode[] = [
   {
     id: 'root',
     label: 'Initiation',
-    description: 'Begin your journey into the NeuroNex grid.',
+    description: 'Begin your journey into the EduQ grid.',
     icon: <Star size={20} />,
     status: 'completed',
     position: { x: 50, y: 8 },

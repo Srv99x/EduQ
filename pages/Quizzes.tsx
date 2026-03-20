@@ -191,7 +191,7 @@ const createFallbackQuestion = (subject: Subject, topic: string): QuizQuestion =
 export const Quizzes: React.FC = () => {
   const [customQuizzes, setCustomQuizzes] = useState<Quiz[]>(() => {
     try {
-      const raw = localStorage.getItem('neuronex_custom_quizzes');
+      const raw = localStorage.getItem('eduq_custom_quizzes');
       return raw ? (JSON.parse(raw) as Quiz[]) : [];
     } catch {
       return [];
@@ -216,7 +216,7 @@ export const Quizzes: React.FC = () => {
   const allQuizzes = useMemo(() => [...PREMADE_QUIZZES, ...customQuizzes], [customQuizzes]);
 
   useEffect(() => {
-    localStorage.setItem('neuronex_custom_quizzes', JSON.stringify(customQuizzes));
+    localStorage.setItem('eduq_custom_quizzes', JSON.stringify(customQuizzes));
   }, [customQuizzes]);
 
   useEffect(() => {

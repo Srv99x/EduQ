@@ -627,7 +627,7 @@ export const PowerUpShop: React.FC = () => {
 
       {/* ── Footer tip ── */}
       <div className="border-t border-white/5 pt-4 flex items-center justify-between text-[9px] font-mono text-gray-800 tracking-widest uppercase">
-        <span>eduvanta arsenal marketplace v1.0</span>
+        <span>eduq arsenal marketplace v1.0</span>
         <span className="flex items-center gap-1">
           <Cpu size={9} />
           complete missions to earn gems

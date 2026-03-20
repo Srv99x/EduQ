@@ -1,7 +1,7 @@
 import { UserGameProfile, XPTransaction, GemTransaction, LevelTier } from '../types';
 import { LEVEL_TIERS, XP_PER_LEVEL, STREAK_MILESTONES } from '../gamificationConstants';
 
-const STORAGE_KEY = 'neuronex_game_profile';
+const STORAGE_KEY = 'eduq_game_profile';
 
 export const gamificationService = {
   // ========== PROFILE MANAGEMENT ==========

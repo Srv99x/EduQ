@@ -9,21 +9,21 @@ export function useBattlePass() {
   const progressPct = Math.round((progressInLevel / SEASON_1.xpPerLevel) * 100);
 
   const [isPremium, setIsPremium] = useState(() => 
-    JSON.parse(localStorage.getItem('eduvanta_premium') || 'false')
+    JSON.parse(localStorage.getItem('eduq_premium') || 'false')
   );
 
   const [claimedRewards, setClaimedRewards] = useState<number[]>(() => 
-    JSON.parse(localStorage.getItem('eduvanta_bp_claimed') || '[]')
+    JSON.parse(localStorage.getItem('eduq_bp_claimed') || '[]')
   );
 
   const claimReward = (level: number) => {
     const updated = [...claimedRewards, level];
-    localStorage.setItem('eduvanta_bp_claimed', JSON.stringify(updated));
+    localStorage.setItem('eduq_bp_claimed', JSON.stringify(updated));
     setClaimedRewards(updated);
   };
 
   const setPremium = (value: boolean) => {
-    localStorage.setItem('eduvanta_premium', JSON.stringify(value));
+    localStorage.setItem('eduq_premium', JSON.stringify(value));
     setIsPremium(value);
   };
 

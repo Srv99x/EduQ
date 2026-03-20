@@ -10,10 +10,10 @@ export const DailyLoginModal: React.FC = () => {
 
   useEffect(() => {
     // Auto-show this modal once per day on app load using a useEffect that checks localStorage
-    const hasSeenToday = localStorage.getItem('eduvanta_daily_seen') === new Date().toDateString();
+    const hasSeenToday = localStorage.getItem('eduq_daily_seen') === new Date().toDateString();
     if (!hasSeenToday && !claimedToday) {
       setIsOpen(true);
-      localStorage.setItem('eduvanta_daily_seen', new Date().toDateString());
+      localStorage.setItem('eduq_daily_seen', new Date().toDateString());
     }
   }, [claimedToday]);
 

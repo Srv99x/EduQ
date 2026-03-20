@@ -17,7 +17,7 @@ export const Notebook: React.FC = () => {
   // Persistence Logic: Load from LocalStorage or use Default
   const [notebooks, setNotebooks] = useState<NotebookEntry[]>(() => {
     try {
-      const saved = localStorage.getItem('neuronex_notebooks');
+      const saved = localStorage.getItem('eduq_notebooks');
       if (saved) {
         const parsed = JSON.parse(saved);
         // Rehydrate Dates
@@ -71,7 +71,7 @@ export const Notebook: React.FC = () => {
 
   // Persist to LocalStorage on change
   useEffect(() => {
-    localStorage.setItem('neuronex_notebooks', JSON.stringify(notebooks));
+    localStorage.setItem('eduq_notebooks', JSON.stringify(notebooks));
   }, [notebooks]);
 
   // Click outside handlers

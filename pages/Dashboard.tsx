@@ -44,8 +44,8 @@ const INITIAL_SCHEDULE: ScheduleItem[] = [
   { id: '2', topic: 'System Design Basics', date: new Date(Date.now() + 86400000).toISOString().split('T')[0], startTime: '14:00', endTime: '15:30' },
 ];
 
-const STUDY_ACTIVE_KEY = 'neuronex_study_active_start';
-const STUDY_SESSIONS_KEY = 'neuronex_study_sessions';
+const STUDY_ACTIVE_KEY = 'eduq_study_active_start';
+const STUDY_SESSIONS_KEY = 'eduq_study_sessions';
 
 const getLocalDayKey = (timestamp: number): string => {
   const date = new Date(timestamp);
@@ -153,13 +153,13 @@ export const Dashboard: React.FC = () => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState(() => {
-    const saved = localStorage.getItem('neuronex_user');
+    const saved = localStorage.getItem('eduq_user');
     return saved ? JSON.parse(saved) : MOCK_USER;
   });
 
   const [notebooks, setNotebooks] = useState<NotebookEntry[]>(() => {
     try {
-      const saved = localStorage.getItem('neuronex_notebooks');
+      const saved = localStorage.getItem('eduq_notebooks');
       if (saved) return JSON.parse(saved);
     } catch (e) {}
     return INITIAL_NOTEBOOKS;
@@ -167,7 +167,7 @@ export const Dashboard: React.FC = () => {
 
   const [schedule, setSchedule] = useState<ScheduleItem[]>(() => {
     try {
-      const saved = localStorage.getItem('neuronex_schedule');
+      const saved = localStorage.getItem('eduq_schedule');
       return saved ? JSON.parse(saved) : INITIAL_SCHEDULE;
     } catch (e) { return INITIAL_SCHEDULE; }
   });
@@ -198,7 +198,7 @@ export const Dashboard: React.FC = () => {
   const totalXP = '900';
   const quizAccuracy = '88%';
 
-  useEffect(() => { localStorage.setItem('neuronex_schedule', JSON.stringify(schedule)); }, [schedule]);
+  useEffect(() => { localStorage.setItem('eduq_schedule', JSON.stringify(schedule)); }, [schedule]);
   useEffect(() => { localStorage.setItem(STUDY_SESSIONS_KEY, JSON.stringify(sessions)); }, [sessions]);
   useEffect(() => { activeStudyRef.current = activeStudyStart; }, [activeStudyStart]);
 
@@ -268,7 +268,7 @@ export const Dashboard: React.FC = () => {
   const handleUpgradeConfirm = () => {
     const updatedUser = { ...user, role: UserRole.PRO };
     setUser(updatedUser);
-    localStorage.setItem('neuronex_user', JSON.stringify(updatedUser));
+    localStorage.setItem('eduq_user', JSON.stringify(updatedUser));
     setShowUpgrade(false);
     alert('Welcome to Pro! You now have unlimited access.');
   };
@@ -304,7 +304,7 @@ export const Dashboard: React.FC = () => {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[9px] font-mono text-cyan-600 tracking-widest uppercase animate-pulse">● SYSTEM ONLINE</span>
-            <span className="text-[9px] font-mono text-gray-700">/ EDUVANTA FIELD OPS /</span>
+            <span className="text-[9px] font-mono text-gray-700">/ EDUQ FIELD OPS /</span>
           </div>
           <h1
             className="text-3xl font-bold tracking-tight"
@@ -507,7 +507,7 @@ export const Dashboard: React.FC = () => {
                   <Mail size={12} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-700" />
                   <input
                     type="email"
-                    placeholder="operative@eduvanta.io"
+                    placeholder="operative@eduq.io"
                     value={email}
                     onChange={(e) => { setEmail(e.target.value); if (status === 'error') { setStatus('idle'); setMessage(''); } }}
                     required
@@ -537,7 +537,7 @@ export const Dashboard: React.FC = () => {
 
       {/* ── Terminal footer ── */}
       <div className="border-t border-white/5 pt-4 flex items-center justify-between text-[9px] font-mono text-gray-800 tracking-widest uppercase">
-        <span>eduvanta field ops terminal v3.1</span>
+        <span>eduq field ops terminal v3.1</span>
         <span className="flex items-center gap-1">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse inline-block" />
           uplink secure

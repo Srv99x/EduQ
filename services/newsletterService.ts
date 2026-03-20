@@ -63,7 +63,7 @@ export const subscribeToNewsletter = async (email: string): Promise<SubscribeRes
             return;
         }
 
-        resolve({ message: "Successfully subscribed to EduVanta updates!", email });
+        resolve({ message: "Successfully subscribed to EduQ updates!", email });
       }, 1000);
     });
   }

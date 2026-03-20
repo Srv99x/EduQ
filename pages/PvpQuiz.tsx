@@ -10,8 +10,8 @@ export const PvpQuiz: React.FC = () => {
   const [screen, setScreen] = useState<ScreenState>('lobby');
   
   // Player Stats
-  const [wins, setWins] = useState(() => parseInt(localStorage.getItem('eduvanta_pvp_wins') || '0'));
-  const [losses, setLosses] = useState(() => parseInt(localStorage.getItem('eduvanta_pvp_losses') || '0'));
+  const [wins, setWins] = useState(() => parseInt(localStorage.getItem('eduq_pvp_wins') || '0'));
+  const [losses, setLosses] = useState(() => parseInt(localStorage.getItem('eduq_pvp_losses') || '0'));
   const totalGames = wins + losses;
   const winrate = totalGames > 0 ? Math.round((wins / totalGames) * 100) : 0;
 
@@ -139,12 +139,12 @@ export const PvpQuiz: React.FC = () => {
     if (outcome === 'victory') {
       const newWins = wins + 1;
       setWins(newWins);
-      localStorage.setItem('eduvanta_pvp_wins', newWins.toString());
+      localStorage.setItem('eduq_pvp_wins', newWins.toString());
       setXpEarned(150);
     } else if (outcome === 'defeat') {
       const newLosses = losses + 1;
       setLosses(newLosses);
-      localStorage.setItem('eduvanta_pvp_losses', newLosses.toString());
+      localStorage.setItem('eduq_pvp_losses', newLosses.toString());
       setXpEarned(30);
     } else {
       setXpEarned(50);

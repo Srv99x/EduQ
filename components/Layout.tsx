@@ -23,14 +23,14 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   
   // Load user from local storage to allow dynamic updates
   const [user, setUser] = useState<User>(() => {
-    const saved = localStorage.getItem('neuronex_user');
+    const saved = localStorage.getItem('eduq_user');
     return saved ? JSON.parse(saved) : MOCK_USER;
   });
 
   // Listen for user updates (e.g. from Settings page)
   useEffect(() => {
     const handleUserUpdate = () => {
-        const saved = localStorage.getItem('neuronex_user');
+        const saved = localStorage.getItem('eduq_user');
         if (saved) {
             setUser(JSON.parse(saved));
         }

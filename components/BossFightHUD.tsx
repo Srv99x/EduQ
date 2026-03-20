@@ -1,7 +1,7 @@
 /**
  * BossFightHUD.tsx
  * ─────────────────────────────────────────────────────────────────────────────
- * Self-contained Boss-Fight overlay for the NeuroNex Coding Ground.
+ * Self-contained Boss-Fight overlay for the EduQ Coding Ground.
  * Drop it above the editor and pass the callbacks it needs — no changes to
  * the core editor logic required.
  *

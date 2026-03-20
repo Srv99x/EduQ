@@ -8,7 +8,7 @@ import { User as UserIcon, Mail, Shield, Bell, CreditCard, Trash2, Save, CheckCi
 export const Settings: React.FC = () => {
   // Simulate user state from persistence or mock
   const [user, setUser] = useState<User>(() => {
-    const saved = localStorage.getItem('neuronex_user');
+    const saved = localStorage.getItem('eduq_user');
     return saved ? JSON.parse(saved) : MOCK_USER;
   });
 
@@ -54,7 +54,7 @@ export const Settings: React.FC = () => {
     setTimeout(() => {
       const updatedUser: User = { ...user, name, email, learningLevel: level, avatar };
       setUser(updatedUser);
-      localStorage.setItem('neuronex_user', JSON.stringify(updatedUser));
+      localStorage.setItem('eduq_user', JSON.stringify(updatedUser));
       
       // Dispatch event to update Layout header immediately
       window.dispatchEvent(new Event('userUpdated'));
@@ -77,9 +77,9 @@ export const Settings: React.FC = () => {
         setTimeout(() => {
             try {
                 // Clear Application Data
-                localStorage.removeItem('neuronex_user');
-                localStorage.removeItem('neuronex_notebooks');
-                localStorage.removeItem('neuronex_schedule');
+                localStorage.removeItem('eduq_user');
+                localStorage.removeItem('eduq_notebooks');
+                localStorage.removeItem('eduq_schedule');
                 
                 // Show feedback
                 alert("Account deleted successfully. You will be redirected.");

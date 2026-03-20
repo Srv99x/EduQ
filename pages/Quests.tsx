@@ -11,7 +11,7 @@ import {
 
 // ─── Mission flavour maps ─────────────────────────────────────────────────────
 
-// Each entry maps 1:1 to a standard DSA/coding concept wrapped in an EduVanta scenario.
+// Each entry maps 1:1 to a standard DSA/coding concept wrapped in an EduQ scenario.
 const OPERATION_NAMES = [
   'Operation: Mirror',          // Array / Linked List Reversal
   'Operation: Null Byte',       // Missing Number in Sequence
@@ -40,7 +40,7 @@ const NARRATIVES = [
   // HashMap
   "The adversary's encryption relies on predictable hash collisions. Build a custom hashmap, exploit the collision pattern, and plant your payload inside the lookup table.",
   // Python / Functions
-  "The EduVanta core is running a corrupted Python daemon. Rewrite the function stack and purge the serpent's logic before it propagates to secondary systems.",
+  "The EduQ core is running a corrupted Python daemon. Rewrite the function stack and purge the serpent's logic before it propagates to secondary systems.",
   // Recursion / Stack
   "A malformed recursive payload has overflowed the call stack. Restructure the execution tree and prevent catastrophic stack unwind before the network goes dark.",
   // Binary Search
@@ -352,7 +352,7 @@ export const Quests: React.FC = () => {
             <span className="text-[9px] font-mono text-cyan-600 tracking-widest uppercase animate-pulse">
               ● SYSTEM ONLINE
             </span>
-            <span className="text-[9px] font-mono text-gray-700">/ EDUVANTA FIELD OPS /</span>
+            <span className="text-[9px] font-mono text-gray-700">/ EDUQ FIELD OPS /</span>
           </div>
           <h1
             className="text-3xl font-bold tracking-tight"
@@ -481,7 +481,7 @@ export const Quests: React.FC = () => {
 
       {/* ── Terminal footer ── */}
       <div className="border-t border-white/5 pt-4 flex items-center justify-between text-[9px] font-mono text-gray-800 tracking-widest uppercase">
-        <span>eduvanta field ops terminal v3.1</span>
+        <span>eduq field ops terminal v3.1</span>
         <span className="flex items-center gap-1">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse inline-block" />
           uplink secure

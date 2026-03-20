@@ -6,7 +6,7 @@ export function useStreak() {
   const [claimedToday, setClaimedToday] = useState(false);
 
   useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem('eduvanta_streak') || '{}');
+    const stored = JSON.parse(localStorage.getItem('eduq_streak') || '{}');
     const today = new Date().toDateString();
     const yesterday = new Date(Date.now() - 86400000).toDateString();
 
@@ -24,7 +24,7 @@ export function useStreak() {
   const claimReward = (xpGain: number) => {
     const today = new Date().toDateString();
     const newStreak = streak + 1;
-    localStorage.setItem('eduvanta_streak', JSON.stringify({
+    localStorage.setItem('eduq_streak', JSON.stringify({
       streak: newStreak,
       lastClaim: today,
     }));
